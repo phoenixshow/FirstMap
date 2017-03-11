@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">FirstMap</string>
+    <string name="delete_marker">删除标注</string>
+    <string name="poi_search">POI检索</string>
+    <string name="at">在</string>
+    <string name="beijing">北京</string>
+    <string name="city_find">市内找</string>
+    <string name="restaurant">餐厅</string>
+    <string name="line">路</string>
+    <string name="from">从</string>
+    <string name="city">市</string>
+    <string name="tiananmen">天安门</string>
+    <string name="to">到</string>
+    <string name="start_search">开始检索</string>
+    <string name="city_search">城市检索</string>
+    <string name="bound_search">区域检索</string>
+    <string name="nearby_search">周边检索</string>
+    <string name="next_data">下一组数据</string>
+    <string name="bus_search">公交信息</string>
+    <string name="route_search">线路规划</string>
+    <string name="shanghai">上海</string>
+    <string name="dongfangmingzhu">东方明珠</string>
+    <string name="longze">龙泽</string>
+    <string name="xidan">西单</string>
+    <string name="geo_code">地理编码</string>
+    <string name="reverse_geo_code">反地理编码</string>
+    <string name="location">定位</string>
+    <string name="permisstion_deny">拒绝授权</string>
+    <string name="permisstion_grant">已授权</string>
+</resources>
