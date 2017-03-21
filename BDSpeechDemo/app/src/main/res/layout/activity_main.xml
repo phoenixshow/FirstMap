@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.phoenix.jjzz.MainActivity">
+    <CheckBox
+        android:id="@+id/cbNLU"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="语义解析" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点按模式"
+        android:onClick="touchMode"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="普通模式"
+        android:onClick="apiMode"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Offline方式"
+        android:onClick="offlineMode"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="语音唤醒"
+        android:onClick="wakeUp"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="语音合成"
+        android:onClick="tts"
+        />
+</LinearLayout>
