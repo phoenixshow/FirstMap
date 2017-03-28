@@ -1,50 +1,28 @@
 package com.phoenix.firstmap;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewStub;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.baidu.mapapi.map.BaiduMap;
-import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.map.Marker;
-import com.baidu.mapapi.map.MarkerOptions;
-import com.baidu.mapapi.map.Polyline;
 import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.overlayutil.BikingRouteOverlay;
-import com.baidu.mapapi.overlayutil.BusLineOverlay;
 import com.baidu.mapapi.overlayutil.DrivingRouteOverlay;
 import com.baidu.mapapi.overlayutil.MassTransitRouteOverlay;
 import com.baidu.mapapi.overlayutil.TransitRouteOverlay;
 import com.baidu.mapapi.overlayutil.WalkingRouteOverlay;
-import com.baidu.mapapi.search.busline.BusLineResult;
-import com.baidu.mapapi.search.busline.BusLineSearch;
-import com.baidu.mapapi.search.busline.BusLineSearchOption;
-import com.baidu.mapapi.search.busline.OnGetBusLineSearchResultListener;
 import com.baidu.mapapi.search.core.BusInfo;
 import com.baidu.mapapi.search.core.CoachInfo;
 import com.baidu.mapapi.search.core.PlaneInfo;
-import com.baidu.mapapi.search.core.PoiInfo;
 import com.baidu.mapapi.search.core.PriceInfo;
-import com.baidu.mapapi.search.core.RouteLine;
 import com.baidu.mapapi.search.core.SearchResult;
 import com.baidu.mapapi.search.core.TaxiInfo;
 import com.baidu.mapapi.search.core.TrainInfo;
 import com.baidu.mapapi.search.core.TransitResultNode;
-import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
-import com.baidu.mapapi.search.poi.PoiCitySearchOption;
-import com.baidu.mapapi.search.poi.PoiDetailResult;
-import com.baidu.mapapi.search.poi.PoiIndoorResult;
-import com.baidu.mapapi.search.poi.PoiResult;
-import com.baidu.mapapi.search.poi.PoiSearch;
 import com.baidu.mapapi.search.route.BikingRoutePlanOption;
 import com.baidu.mapapi.search.route.BikingRouteResult;
 import com.baidu.mapapi.search.route.DrivingRoutePlanOption;
@@ -57,18 +35,14 @@ import com.baidu.mapapi.search.route.OnGetRoutePlanResultListener;
 import com.baidu.mapapi.search.route.PlanNode;
 import com.baidu.mapapi.search.route.RoutePlanSearch;
 import com.baidu.mapapi.search.route.SuggestAddrInfo;
-import com.baidu.mapapi.search.route.TransitRouteLine;
 import com.baidu.mapapi.search.route.TransitRoutePlanOption;
 import com.baidu.mapapi.search.route.TransitRouteResult;
 import com.baidu.mapapi.search.route.WalkingRoutePlanOption;
 import com.baidu.mapapi.search.route.WalkingRouteResult;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static com.baidu.location.h.j.W;
-
-public class RoutePlanSearchActivity extends AppCompatActivity {
+public class RoutePlanSearchActivity extends BaseActivity {
     private static final int MASS_ROUTE = 0;
     private static final int TRANSIT_ROUTE = 1;
     private static final int DRIVING_ROUTE = 2;
@@ -80,9 +54,6 @@ public class RoutePlanSearchActivity extends AppCompatActivity {
     private EditText fromCityEt, fromSearchKeyEt, toCityEt, toSearchKeyEt;
     private RadioGroup rg;
 
-    private TextureMapView mMapView = null;
-//    private MapView mMapView = null;
-    private BaiduMap mBaiduMap;
     RoutePlanSearch mSearch = null;
 
     @Override
@@ -128,28 +99,6 @@ public class RoutePlanSearchActivity extends AppCompatActivity {
         mSearch = RoutePlanSearch.newInstance();
         //设置公交线路规划检索监听者；
         mSearch.setOnGetRoutePlanResultListener( routeListener );
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mSearch.destroy();
-        //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
-        mMapView.onDestroy();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理
-        mMapView.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理
-        mMapView.onPause();
     }
 
     //创建公交线路规划检索监听者；

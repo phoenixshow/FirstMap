@@ -15,7 +15,7 @@
     <string name="city_search">城市检索</string>
     <string name="bound_search">区域检索</string>
     <string name="nearby_search">周边检索</string>
-    <string name="next_data">下一组数据</string>
+    <string name="next_data">下一组</string>
     <string name="bus_search">公交信息</string>
     <string name="route_search">线路规划</string>
     <string name="shanghai">上海</string>

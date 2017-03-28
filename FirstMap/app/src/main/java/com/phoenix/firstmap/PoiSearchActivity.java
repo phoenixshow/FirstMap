@@ -1,6 +1,5 @@
 package com.phoenix.firstmap;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -26,9 +25,7 @@ import com.baidu.mapapi.search.poi.PoiNearbySearchOption;
 import com.baidu.mapapi.search.poi.PoiResult;
 import com.baidu.mapapi.search.poi.PoiSearch;
 
-import static com.phoenix.firstmap.R.id.searchKey_et;
-
-public class PoiSearchActivity extends AppCompatActivity implements View.OnClickListener {
+public class PoiSearchActivity extends BaseActivity implements View.OnClickListener {
     //城市文本框，关键字文本框
     private EditText editCityEt, editSearchKeyEt;
     // 城市检索，区域检索，周边检索，下一组数据 按钮
@@ -39,9 +36,6 @@ public class PoiSearchActivity extends AppCompatActivity implements View.OnClick
     private int page = 1;
     private int totalPage = 0;
 
-    private TextureMapView mMapView = null;
-//    private MapView mMapView = null;
-    private BaiduMap mBaiduMap;
     PoiSearch mPoiSearch = null;
 
     private double latitude = 39.963175;
@@ -94,24 +88,8 @@ public class PoiSearchActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         mPoiSearch.destroy();
-        //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
-        mMapView.onDestroy();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理
-        mMapView.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理
-        mMapView.onPause();
+        super.onDestroy();
     }
 
     @Override

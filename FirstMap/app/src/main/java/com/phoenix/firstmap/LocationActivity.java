@@ -1,7 +1,6 @@
 package com.phoenix.firstmap;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
@@ -10,7 +9,6 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.Poi;
-import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatusUpdate;
@@ -25,10 +23,7 @@ import java.util.List;
 /**
  * Created by flashing on 2017/3/11.
  */
-public class LocationActivity extends AppCompatActivity {
-    private TextureMapView mMapView = null;
-    //    private MapView mMapView = null;
-    private BaiduMap mBaiduMap;
+public class LocationActivity extends BaseActivity {
     public LocationClient mLocationClient = null;
     public BDLocationListener myListener = new MyLocationListener();
 
@@ -85,31 +80,6 @@ public class LocationActivity extends AppCompatActivity {
         //可选，默认false，设置是否需要过滤GPS仿真结果，默认需要
 
         mLocationClient.setLocOption(option);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // 退出时销毁定位
-        mLocationClient.stop();
-        // 当不需要定位图层时关闭定位图层
-        mBaiduMap.setMyLocationEnabled(false);
-        //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
-        mMapView.onDestroy();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理
-        mMapView.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理
-        mMapView.onPause();
     }
 
     public void location(View view) {
