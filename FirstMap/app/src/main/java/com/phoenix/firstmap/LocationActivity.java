@@ -191,6 +191,7 @@ public class LocationActivity extends BaseActivity {
     }
 
     private void showMyLocation(BDLocation location){
+        mLocationClient.stop();
         // 开启定位图层
         mBaiduMap.setMyLocationEnabled(true);
         // 构造定位数据
@@ -210,5 +211,12 @@ public class LocationActivity extends BaseActivity {
         //构造MapStatusUpdate，并设置结束点为中心点
         MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(new LatLng(location.getLatitude(), location.getLongitude()));
         mBaiduMap.animateMapStatus(msu);
+    }
+
+    @Override
+    protected void onDestroy() {
+        // 当不需要定位图层时关闭定位图层
+        mBaiduMap.setMyLocationEnabled(false);
+        super.onDestroy();
     }
 }

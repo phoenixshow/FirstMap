@@ -307,4 +307,10 @@ public class RoutePlanSearchActivity extends BaseActivity {
             super(baiduMap);
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        mSearch.destroy();
+        super.onDestroy();
+    }
 }

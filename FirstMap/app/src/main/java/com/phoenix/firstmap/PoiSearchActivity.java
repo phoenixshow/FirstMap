@@ -87,12 +87,6 @@ public class PoiSearchActivity extends BaseActivity implements View.OnClickListe
     }
 
     @Override
-    protected void onDestroy() {
-        mPoiSearch.destroy();
-        super.onDestroy();
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.city_search_btn:
@@ -229,5 +223,11 @@ public class PoiSearchActivity extends BaseActivity implements View.OnClickListe
             mPoiSearch.searchPoiDetail(new PoiDetailSearchOption().poiUid(poiInfo.uid));
             return true;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        mPoiSearch.destroy();
+        super.onDestroy();
     }
 }

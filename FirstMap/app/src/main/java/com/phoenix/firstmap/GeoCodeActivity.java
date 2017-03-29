@@ -81,4 +81,10 @@ public class GeoCodeActivity extends BaseActivity {
         //发起反地理编码检索
         mSearch.reverseGeoCode(new ReverseGeoCodeOption().location(pt));
     }
+
+    @Override
+    protected void onDestroy() {
+        mSearch.destroy();
+        super.onDestroy();
+    }
 }
